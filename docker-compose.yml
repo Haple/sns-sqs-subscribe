@@ -1,0 +1,15 @@
+version: '3'
+services:
+
+  localstack:
+    image: localstack/localstack:0.11.2
+    ports:
+      - '4575:4575' # SNS
+      - '4576:4576' # SQS
+      - '8055:8080' # Localstack UI
+    environment:
+      - SERVICES=sqs,sns
+      - DEBUG=0
+      - DATA_DIR=/tmp/localstack/data
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'

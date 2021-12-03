@@ -14,6 +14,7 @@ subscription_arn=$(awslocal sns subscribe \
     --topic-arn "$topic_arn" \
     --protocol sqs \
     --notification-endpoint "$queue_arn" \
+    --attributes '{"RawMessageDelivery": "true"}'
     --output text)
 
 echo "Subscription ARN: $subscription_arn" 
